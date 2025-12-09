@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="InputRes" format=3 uid="uid://dpr1drpkgllua"]
+
+[ext_resource type="Script" uid="uid://bey0x66ukd6lk" path="res://Core/InputRes.cs" id="1_coy18"]
+
+[resource]
+script = ExtResource("1_coy18")
+metadata/_custom_type_script = "uid://bey0x66ukd6lk"

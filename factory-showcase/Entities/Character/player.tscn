@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bj4tbbjkj2oqh"]
+
+[ext_resource type="Script" uid="uid://bxxb6q5mtsrvy" path="res://Entities/Character/Mover.cs" id="1_l1r5h"]
+[ext_resource type="Script" uid="uid://bi2wi7lp0ljvb" path="res://Entities/Character/PlayerInput.cs" id="2_t4ad6"]
+[ext_resource type="Resource" uid="uid://dpr1drpkgllua" path="res://Resources/player_inputs.tres" id="3_i7wby"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ix6vc"]
+albedo_color = Color(0.7201518, 0.45926744, 0.25843728, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ix6vc"]
+material = SubResource("StandardMaterial3D_ix6vc")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ix6vc"]
+
+[node name="Player" type="CharacterBody3D" unique_id=423682830]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+
+[node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=529987623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ix6vc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=56745004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ix6vc")
+
+[node name="Head" type="Node3D" parent="." unique_id=184760846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4326727, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1208948549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.43041205)
+current = true
+
+[node name="Mover" type="Node" parent="." unique_id=1727910746 node_paths=PackedStringArray("Character", "CharacterInput", "CharacterHead")]
+script = ExtResource("1_l1r5h")
+Acceleration = 5.0
+Friction = 5.0
+Character = NodePath("..")
+CharacterInput = NodePath("../Input")
+CharacterHead = NodePath("../Head")
+
+[node name="Input" type="Node" parent="." unique_id=473671009]
+script = ExtResource("2_t4ad6")
+PlayerInputRes = ExtResource("3_i7wby")

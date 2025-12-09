@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://2cjq0w3fled5"]
+
+[ext_resource type="PackedScene" uid="uid://co06uh08nwy8b" path="res://Entities/Objects/grass.tscn" id="1_o6mkr"]
+[ext_resource type="PackedScene" uid="uid://bj4tbbjkj2oqh" path="res://Entities/Character/player.tscn" id="2_qmtf6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qmtf6"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_uawph"]
+sky_material = SubResource("ProceduralSkyMaterial_qmtf6")
+
+[sub_resource type="Environment" id="Environment_52x1o"]
+background_mode = 2
+sky = SubResource("Sky_uawph")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yfk6w"]
+albedo_color = Color(0.32772392, 0.40022826, 0.13564926, 1)
+
+[node name="Level" type="Node3D" unique_id=383521109]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1248586783]
+environment = SubResource("Environment_52x1o")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=650392865]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1083628835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(25, 1, 25)
+material = SubResource("StandardMaterial3D_yfk6w")
+
+[node name="Objects" type="Node3D" parent="." unique_id=1947772735]
+
+[node name="Grass_Common_Short2" parent="Objects" unique_id=1387518033 instance=ExtResource("1_o6mkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.355207, 0.022385454, 10.2266)
+
+[node name="Player" parent="." unique_id=423682830 instance=ExtResource("2_qmtf6")]
