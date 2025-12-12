@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+[GlobalClass]
 public partial class Mover : Node
 {
 	#region Movement Related
@@ -8,19 +9,18 @@ public partial class Mover : Node
 	public Vector2 InputDirection { get; set; }
 	[Export] public MovementModifer MoveMod { get; set; } = MovementModifer.Idle;
 	public float MoveSpeed = 0f;
-	public bool isRunning => CharacterInput.IsRunning;
-	public bool isCrouching = false;
-	[Export] bool isHeadBobEnabled = true;
+	public bool isRunning => Character.IsRunning;
+	public bool isJogging => Character.IsJogging;
+	public bool isCrouching => Character.IsCrouching;
 	[Export] public float Acceleration = 10f;
 	[Export] public float Friction = 15f;
-	[Export] float sensitivity = 0.0025f;
 	#endregion
 
 	#region Required Nodes
 	[ExportCategory("Required Nodes")]
-	[Export] public CharacterBody3D Character { get; private set; }
-	[Export] public CharacterInput CharacterInput { get; set; }
-	[Export] public Node3D CharacterHead { get; private set; }
+	[Export] public Node3D CameraBoom { get; private set; }
+	[Export] public Character Character { get; private set; }
+	[Export] public SpringArm3D SpringArm { get; private set; }
 	#endregion
 
 	public override void _Ready()
@@ -28,46 +28,16 @@ public partial class Mover : Node
 		Log.Info($"Move Component ready on {GetParent().Name}");
 	}
 
-    public override void _Process(double delta)
-    {
+	public override void _Process(double delta)
+	{
 		SetMoveSpeed();
-    }
-
-	public override void _PhysicsProcess(double delta)
-	{
-		Vector3 walkDir = SetInputDirection();
-		Walk(walkDir, delta);
-		Character.MoveAndSlide();
-	}
-
-    public override void _Input(InputEvent @event)
-    {
-        if (@event is InputEventMouseMotion motion)
-        {
-			Character.RotateY(-motion.Relative.X * sensitivity);
-			CharacterHead.RotateX(-motion.Relative.Y * sensitivity);
-        }
-    }
-
-	public Vector3 SetInputDirection()
-	{
-		Vector3 localDirection = new Vector3(CharacterInput.InputDirection.X, 0f, CharacterInput.InputDirection.Y);
-
-		if (localDirection.LengthSquared() > 1f)
-		{
-			localDirection = localDirection.Normalized();
-		}
-
-		Vector3 worldDir = Character.GlobalTransform.Basis * localDirection;
-
-		return worldDir;
 	}
 
 	void SetMoveSpeed()
 	{
-		if (CharacterInput.InputDirection != Vector2.Zero)
+		if (Character.InputDirection != Vector2.Zero)
 		{
-			if (isRunning)
+			if (isJogging)
 			{
 				MoveMod = MovementModifer.Run;
 			}
@@ -79,16 +49,25 @@ public partial class Mover : Node
 			{
 				MoveMod = MovementModifer.Crouch;
 			}
+			else if (isRunning)
+			{
+				MoveMod = MovementModifer.Sprint;
+			}
 		}
 		else
 		{
 			MoveMod = MovementModifer.Idle;
 		}
-		
-        MoveSpeed = LookupChart.GetSpeedModifier(MoveMod);
-    }
-	
-	void Walk(Vector3 targetDir, double delta)
+
+		MoveSpeed = LookupChart.GetSpeedModifier(MoveMod);
+	}
+
+	void SetLookDir(Vector3 inputDir, double delta)
+	{
+		// 
+	}
+
+	public void Walk(Vector3 targetDir, double delta)
 	{
 		Vector3 vel = Character.Velocity;
 
@@ -106,5 +85,5 @@ public partial class Mover : Node
 		}
 
 		Character.Velocity = vel;
-    }
+	}
 }
