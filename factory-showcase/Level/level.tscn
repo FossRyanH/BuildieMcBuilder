@@ -1,7 +1,27 @@
 [gd_scene format=3 uid="uid://2cjq0w3fled5"]
 
 [ext_resource type="PackedScene" uid="uid://co06uh08nwy8b" path="res://Entities/Objects/grass.tscn" id="1_o6mkr"]
+[ext_resource type="PackedScene" uid="uid://c3k3irpb05a78" path="res://Assets/Stylized Nature/glTF/Mushroom_Common.gltf" id="2_jghi6"]
 [ext_resource type="PackedScene" uid="uid://bj4tbbjkj2oqh" path="res://Entities/Character/player.tscn" id="2_qmtf6"]
+[ext_resource type="PackedScene" uid="uid://85w355h8vs1" path="res://Assets/Stylized Nature/glTF/Mushroom_Laetiporus.gltf" id="3_3opgi"]
+[ext_resource type="PackedScene" uid="uid://cctkoby7q3v0r" path="res://Assets/Stylized Nature/glTF/Rock_Medium_3.gltf" id="4_ys2en"]
+[ext_resource type="PackedScene" uid="uid://ct8gmawjmblcb" path="res://Assets/Stylized Nature/glTF/Rock_Medium_2.gltf" id="5_du4cn"]
+[ext_resource type="PackedScene" uid="uid://1ry2pysep3fn" path="res://Assets/Stylized Nature/glTF/TwistedTree_1.gltf" id="6_wfwu7"]
+[ext_resource type="PackedScene" uid="uid://n1pmq5vm4y5y" path="res://Assets/Stylized Nature/glTF/TwistedTree_2.gltf" id="7_cqvaw"]
+[ext_resource type="PackedScene" uid="uid://ccvh3vte756k0" path="res://Assets/Stylized Nature/glTF/TwistedTree_4.gltf" id="8_232uv"]
+[ext_resource type="PackedScene" uid="uid://csxyji4f12hee" path="res://Assets/Stylized Nature/glTF/TwistedTree_5.gltf" id="9_6uec0"]
+[ext_resource type="PackedScene" uid="uid://difmal5ijqwo2" path="res://Assets/Stylized Nature/glTF/Plant_7.gltf" id="10_r0jbq"]
+[ext_resource type="PackedScene" uid="uid://vudu0m3o3bex" path="res://Assets/Stylized Nature/glTF/Plant_7_Big.gltf" id="11_816bt"]
+[ext_resource type="PackedScene" uid="uid://paf3xofljsmt" path="res://Assets/Stylized Nature/glTF/Pine_2.gltf" id="12_mddns"]
+[ext_resource type="PackedScene" uid="uid://bhkylxro750vp" path="res://Assets/Stylized Nature/glTF/Pine_4.gltf" id="13_x31ef"]
+[ext_resource type="PackedScene" uid="uid://cue02o8ygfphu" path="res://Assets/Stylized Nature/glTF/Grass_Wispy_Short.gltf" id="14_i4n7n"]
+[ext_resource type="PackedScene" uid="uid://dq3ltvt0jjoat" path="res://Assets/Stylized Nature/glTF/Grass_Wispy_Tall.gltf" id="15_pt1jg"]
+[ext_resource type="PackedScene" uid="uid://dwl5ow0cdsyln" path="res://Assets/Stylized Nature/glTF/Grass_Common_Short.gltf" id="16_lemr6"]
+[ext_resource type="PackedScene" uid="uid://dgri1u3y8yka1" path="res://Assets/Stylized Nature/glTF/Grass_Common_Tall.gltf" id="17_nu31q"]
+[ext_resource type="PackedScene" uid="uid://x8mjfxlcomy" path="res://Assets/Stylized Nature/glTF/Flower_4_Single.gltf" id="18_w6gbm"]
+[ext_resource type="PackedScene" uid="uid://cxwgipemdyp5n" path="res://Assets/Stylized Nature/glTF/Fern_1.gltf" id="19_g81h0"]
+[ext_resource type="PackedScene" uid="uid://c2ml6gaknn8kk" path="res://Assets/Stylized Nature/glTF/Bush_Common.gltf" id="20_w3qvs"]
+[ext_resource type="PackedScene" uid="uid://bda64xajcfd7n" path="res://Assets/Stylized Nature/glTF/Bush_Common_Flowers.gltf" id="21_mpxfd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qmtf6"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -38,6 +58,69 @@ material = SubResource("StandardMaterial3D_yfk6w")
 
 [node name="Grass_Common_Short2" parent="Objects" unique_id=1387518033 instance=ExtResource("1_o6mkr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.355207, 0.022385454, 10.2266)
+
+[node name="Grass_Common_Short3" parent="Objects" unique_id=1398906919 instance=ExtResource("1_o6mkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.191343, 0.022385454, 2.0128832)
+
+[node name="Mushroom_Common2" parent="Objects" unique_id=2013930966 instance=ExtResource("2_jghi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7317288, 0.017470969, 5.491025)
+
+[node name="Mushroom_Laetiporus2" parent="Objects" unique_id=1032778672 instance=ExtResource("3_3opgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.44362, 0.16022536, 6.8859177)
+
+[node name="Rock_Medium_32" parent="Objects" unique_id=915604622 instance=ExtResource("4_ys2en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5018277, 0.3156444, -4.9840918)
+
+[node name="Rock_Medium_22" parent="Objects" unique_id=1203290204 instance=ExtResource("5_du4cn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.946116, 0.050840635, -10.067132)
+
+[node name="TwistedTree_12" parent="Objects" unique_id=913777933 instance=ExtResource("6_wfwu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.340076, 0.20147374, 0.18933392)
+
+[node name="TwistedTree_22" parent="Objects" unique_id=2108421350 instance=ExtResource("7_cqvaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.449144, 0.20147468, 8.964939)
+
+[node name="TwistedTree_42" parent="Objects" unique_id=1461018729 instance=ExtResource("8_232uv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.90831, 0.20147468, -9.007501)
+
+[node name="TwistedTree_52" parent="Objects" unique_id=1890506032 instance=ExtResource("9_6uec0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.446229, 0.2014742, -10.925114)
+
+[node name="Plant_72" parent="Objects" unique_id=1963239888 instance=ExtResource("10_r0jbq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4007683, 9.536743e-07, -9.363799)
+
+[node name="Plant_7_Big2" parent="Objects" unique_id=357336712 instance=ExtResource("11_816bt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8512354, 9.536743e-07, -3.8782644)
+
+[node name="Pine_22" parent="Objects" unique_id=2026114873 instance=ExtResource("12_mddns")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.058452, 0.2350886, 1.9619999)
+
+[node name="Pine_42" parent="Objects" unique_id=1172088435 instance=ExtResource("13_x31ef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98938, 0.23508862, 6.6920853)
+
+[node name="Grass_Wispy_Short2" parent="Objects" unique_id=533216715 instance=ExtResource("14_i4n7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5921535, 0.08575009, -10.605221)
+
+[node name="Grass_Wispy_Tall2" parent="Objects" unique_id=1104180237 instance=ExtResource("15_pt1jg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.058608, 0.03605277, -10.1685295)
+
+[node name="Grass_Common_Short4" parent="Objects" unique_id=905374849 instance=ExtResource("16_lemr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.309753, 0.022386169, -11.608326)
+
+[node name="Grass_Common_Tall2" parent="Objects" unique_id=809736942 instance=ExtResource("17_nu31q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.661646, 0.03136225, -11.747623)
+
+[node name="Flower_4_Single2" parent="Objects" unique_id=1623425208 instance=ExtResource("18_w6gbm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.151101, 0.030430483, -12.096665)
+
+[node name="Fern_12" parent="Objects" unique_id=374010890 instance=ExtResource("19_g81h0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.687516, 0.077334434, -9.299665)
+
+[node name="Bush_Common2" parent="Objects" unique_id=466583966 instance=ExtResource("20_w3qvs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.725515, 0.2346947, -7.915762)
+
+[node name="Bush_Common_Flowers2" parent="Objects" unique_id=790533890 instance=ExtResource("21_mpxfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01213, 0.23469375, 3.061201)
 
 [node name="Player" parent="." unique_id=423682830 instance=ExtResource("2_qmtf6")]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 0)

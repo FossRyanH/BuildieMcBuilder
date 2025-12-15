@@ -17,7 +17,7 @@ public partial class Player : Character
 
 	#region Camera Specifics
 	[Export] float sensitivity = 0.0025f;
-	[Export] float rotationSpeed = 10f;
+	[Export] public float RotationSpeed = 10f;
 	[Export] float cameraLimitRotDeg = 60f;
 	#endregion
 
@@ -40,13 +40,12 @@ public partial class Player : Character
 		Statemachine?.Update(delta);
 	}
 
-    public override void _Input(InputEvent @event)
-    {
+	public override void _Input(InputEvent @event)
+	{
 		base._Input(@event);
 
 		CameraControl(@event);
-    }
-
+	}
 	
 	void CameraControl(InputEvent @event)
 	{

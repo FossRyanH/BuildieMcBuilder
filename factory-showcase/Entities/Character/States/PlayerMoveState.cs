@@ -35,6 +35,7 @@ public class PlayerMoveState : PlayerBaseState
         base.PhysicsUpdate(delta);
         Vector3 walkDir = SetInputDirection();
         Player.Mover.Walk(walkDir, delta);
+        Player.Mover.RotateTowards(walkDir, delta);
         Player.MoveAndSlide();
     }
 

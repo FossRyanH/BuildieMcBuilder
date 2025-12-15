@@ -14,6 +14,7 @@ public partial class Mover : Node
 	public bool isCrouching => Character.IsCrouching;
 	[Export] public float Acceleration = 10f;
 	[Export] public float Friction = 15f;
+	[Export] float rotationSpeed = 6f;
 	#endregion
 
 	#region Required Nodes
@@ -62,11 +63,6 @@ public partial class Mover : Node
 		MoveSpeed = LookupChart.GetSpeedModifier(MoveMod);
 	}
 
-	void SetLookDir(Vector3 inputDir, double delta)
-	{
-		// 
-	}
-
 	public void Walk(Vector3 targetDir, double delta)
 	{
 		Vector3 vel = Character.Velocity;
@@ -85,5 +81,20 @@ public partial class Mover : Node
 		}
 
 		Character.Velocity = vel;
+	}
+
+	public void RotateTowards(Vector3 targetDir, double delta)
+	{
+		if (targetDir.LengthSquared() < Mathf.Epsilon) return;
+
+		targetDir.Y = 0f;
+		targetDir = targetDir.Normalized();
+
+		float targetYaw = Mathf.Atan2(targetDir.X, targetDir.Z);
+
+		Vector3 bodyRot = Character.Body.Rotation;
+		bodyRot.Y = Mathf.LerpAngle(bodyRot.Y, targetYaw, (float)delta * rotationSpeed);
+
+		Character.Body.Rotation = bodyRot;
 	}
 }

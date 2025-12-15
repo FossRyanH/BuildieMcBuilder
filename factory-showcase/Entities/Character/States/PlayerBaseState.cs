@@ -73,9 +73,8 @@ public partial class PlayerBaseState : IState
     }
 
 
-    private void Move(Vector2 inputDir)
-    {
+	private void Move(Vector2 inputDir)
+	{
 		Player.InputDirection = inputDir;
-    }
-
+	}
 }
