@@ -36,8 +36,15 @@ sky = SubResource("Sky_uawph")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yfk6w"]
-albedo_color = Color(0.32772392, 0.40022826, 0.13564926, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jghi6"]
+albedo_color = Color(0.22624001, 0.29899225, 0.11994325, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3opgi"]
+material = SubResource("StandardMaterial3D_jghi6")
+size = Vector3(25, 1, 25)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jghi6"]
+data = PackedVector3Array(-12.5, 0.5, 12.5, 12.5, 0.5, 12.5, -12.5, -0.5, 12.5, 12.5, 0.5, 12.5, 12.5, -0.5, 12.5, -12.5, -0.5, 12.5, 12.5, 0.5, -12.5, -12.5, 0.5, -12.5, 12.5, -0.5, -12.5, -12.5, 0.5, -12.5, -12.5, -0.5, -12.5, 12.5, -0.5, -12.5, 12.5, 0.5, 12.5, 12.5, 0.5, -12.5, 12.5, -0.5, 12.5, 12.5, 0.5, -12.5, 12.5, -0.5, -12.5, 12.5, -0.5, 12.5, -12.5, 0.5, -12.5, -12.5, 0.5, 12.5, -12.5, -0.5, -12.5, -12.5, 0.5, 12.5, -12.5, -0.5, 12.5, -12.5, -0.5, -12.5, 12.5, 0.5, 12.5, -12.5, 0.5, 12.5, 12.5, 0.5, -12.5, -12.5, 0.5, 12.5, -12.5, 0.5, -12.5, 12.5, 0.5, -12.5, -12.5, -0.5, 12.5, 12.5, -0.5, 12.5, -12.5, -0.5, -12.5, 12.5, -0.5, 12.5, 12.5, -0.5, -12.5, -12.5, -0.5, -12.5)
 
 [node name="Level" type="Node3D" unique_id=383521109]
 
@@ -48,11 +55,15 @@ environment = SubResource("Environment_52x1o")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1083628835]
+[node name="GroundSM" type="StaticBody3D" parent="." unique_id=462829273]
+
+[node name="Ground" type="MeshInstance3D" parent="GroundSM" unique_id=979162595]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-use_collision = true
-size = Vector3(25, 1, 25)
-material = SubResource("StandardMaterial3D_yfk6w")
+mesh = SubResource("BoxMesh_3opgi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundSM" unique_id=1977167219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("ConcavePolygonShape3D_jghi6")
 
 [node name="Objects" type="Node3D" parent="." unique_id=1947772735]
 
@@ -69,7 +80,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7317288, 0.017470969, 5.49
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.44362, 0.16022536, 6.8859177)
 
 [node name="Rock_Medium_32" parent="Objects" unique_id=915604622 instance=ExtResource("4_ys2en")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5018277, 0.3156444, -4.9840918)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5018277, -0.17464289, -4.9840918)
 
 [node name="Rock_Medium_22" parent="Objects" unique_id=1203290204 instance=ExtResource("5_du4cn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.946116, 0.050840635, -10.067132)
@@ -123,4 +134,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.725515, 0.2346947, -7.915
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01213, 0.23469375, 3.061201)
 
 [node name="Player" parent="." unique_id=423682830 instance=ExtResource("2_qmtf6")]
-transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 8.478283, 0)

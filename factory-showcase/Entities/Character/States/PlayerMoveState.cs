@@ -10,22 +10,25 @@ public class PlayerMoveState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        Player.IsJogging = true;
     }
 
     public override void Exit()
     {
         base.Exit();
-        Player.IsJogging = false;
     }
 
     public override void Update(double delta)
     {
         base.Update(delta);
+
         if (Player.InputDirection == Vector2.Zero)
         {
             Player.Statemachine.ChangeState(new PlayerIdleState(Player));
         }
+        else if (Player.IsCrouching)
+		{
+            Player.Statemachine.ChangeState(new PlayerCrouchState(Player));
+		}
 
         UpdateMovementAnim();
     }
@@ -36,23 +39,25 @@ public class PlayerMoveState : PlayerBaseState
         Vector3 walkDir = SetInputDirection();
         Player.Mover.Walk(walkDir, delta);
         Player.Mover.RotateTowards(walkDir, delta);
-        Player.MoveAndSlide();
     }
 
     void UpdateMovementAnim()
     {
-        if (Player.IsWalking)
+        if (Player.InputDirection.LengthSquared() > 0.5f && Player.IsCrouching)
         {
-            Player.Animator.State = State.Walk;
+            Player.Animator.State = State.CrouchWalk;
         }
-        else if (Player.IsJogging)
+        else if (Player.InputDirection.LengthSquared() > 1f)
+        {
+            Player.Animator.State = State.Sprint;
+        }
+        else if (Player.InputDirection.LengthSquared() > 0.5f)
         {
             Player.Animator.State = State.Run;
         }
-
-        if (Player.IsRunning)
+        else if (Player.InputDirection.LengthSquared() > 0f)
         {
-            Player.Animator.State = State.Sprint;
+            Player.Animator.State = State.Walk;
         }
     }
 }

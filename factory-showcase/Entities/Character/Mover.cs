@@ -6,12 +6,11 @@ public partial class Mover : Node
 {
 	#region Movement Related
 	[ExportCategory("Movement Variables")]
-	public Vector2 InputDirection { get; set; }
 	[Export] public MovementModifer MoveMod { get; set; } = MovementModifer.Idle;
 	public float MoveSpeed = 0f;
-	public bool isRunning => Character.IsRunning;
-	public bool isJogging => Character.IsJogging;
-	public bool isCrouching => Character.IsCrouching;
+	public bool IsRunning => Character.IsRunning;
+	public bool IsForcedWalk => Character.IsForcedWalk;
+	public bool IsCrouching => Character.IsCrouching;
 	[Export] public float Acceleration = 10f;
 	[Export] public float Friction = 15f;
 	[Export] float rotationSpeed = 6f;
@@ -38,21 +37,21 @@ public partial class Mover : Node
 	{
 		if (Character.InputDirection != Vector2.Zero)
 		{
-			if (isJogging)
-			{
-				MoveMod = MovementModifer.Run;
-			}
-			else if (!isRunning && !isCrouching)
-			{
-				MoveMod = MovementModifer.Walk;
-			}
-			else if (!isRunning && isCrouching)
+			if (!IsRunning && IsCrouching && Character.InputDirection.LengthSquared() > 0f)
 			{
 				MoveMod = MovementModifer.Crouch;
 			}
-			else if (isRunning)
+			else if (Character.InputDirection.LengthSquared() > 1f)
 			{
 				MoveMod = MovementModifer.Sprint;
+			}
+			else if (Character.InputDirection.LengthSquared() > 0.5f)
+			{
+				MoveMod = MovementModifer.Run;
+			}
+			else if (Character.InputDirection.LengthSquared() > 0f || IsForcedWalk)
+			{
+				MoveMod = MovementModifer.Walk;
 			}
 		}
 		else

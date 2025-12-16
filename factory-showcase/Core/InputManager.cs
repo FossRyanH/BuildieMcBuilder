@@ -13,18 +13,28 @@ public partial class InputManager : Singleton<InputManager>
     }
 
 
-    public override void _Process(double delta)
-    {
+	public override void _Process(double delta)
+	{
 		inputDir = Input.GetVector("MoveLeft", "MoveRight", "MoveForward", "MoveBackward");
 		playerInputs.HandleMovement(inputDir);
 
 		if (Input.IsActionJustPressed("Sprint"))
-        {
+		{
 			playerInputs.HandleRun();
-        }
+		}
 		else if (Input.IsActionJustReleased("Sprint"))
-        {
+		{
 			playerInputs.HandleRun();
-        }
+		}
+	}
+
+    public override void _Input(InputEvent @event)
+    {
+		base._Input(@event);
+		
+		if (@event.IsActionPressed("Crouch"))
+		{
+			playerInputs.HandleCrouch();
+		}
     }
 }

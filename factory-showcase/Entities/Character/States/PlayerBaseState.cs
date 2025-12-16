@@ -22,13 +22,29 @@ public partial class PlayerBaseState : IState
 
     public virtual void PhysicsUpdate(double delta)
     {
-        // 
+		if (!Player.IsOnFloor())
+		{
+			Player.Velocity += Vector3.Down * Globals.Gravity * (float)delta;
+		}
+		else
+		{
+			if (Player.Velocity.Y < 0f)
+			{
+				Player.Velocity = new Vector3(Player.Velocity.X, 0f, Player.Velocity.Z);
+			}
+		}
+
+		Player.MoveAndSlide();
     }
 
 	public virtual void Update(double delta)
 	{
 		Player.Animator.UpdateTree();
 		SetInputDirection();
+		if (!Player.IsOnFloor() && !(Player.Statemachine.CurrentState is PlayerFallState))
+		{
+			Player.Statemachine.ChangeState(new PlayerFallState(Player));
+		}
 	}
 
 	protected Vector3 SetInputDirection()
@@ -59,12 +75,14 @@ public partial class PlayerBaseState : IState
 	{
 		Player.PlayerInput.MovementInput += Move;
 		Player.PlayerInput.IsRunning += Sprint;
+		Player.PlayerInput.Crouch += Crouch;
 	}
 	
 	void UnregisterInput()
 	{
 		Player.PlayerInput.MovementInput -= Move;
 		Player.PlayerInput.IsRunning -= Sprint;
+		Player.PlayerInput.Crouch -= Crouch;
 	}
 
     private void Sprint()
@@ -76,5 +94,18 @@ public partial class PlayerBaseState : IState
 	private void Move(Vector2 inputDir)
 	{
 		Player.InputDirection = inputDir;
+		if (Player.IsRunning)
+		{
+			Player.InputDirection = inputDir * 2f;
+		}
+		else if (Player.IsForcedWalk)
+		{
+			Player.InputDirection = inputDir / 2f;
+		}
+	}
+
+	void Crouch()
+	{
+		Player.IsCrouching = !Player.IsCrouching;
 	}
 }

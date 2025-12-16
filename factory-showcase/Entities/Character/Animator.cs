@@ -17,9 +17,9 @@ public partial class Animator : Node
 	public float CrouchIdleVal = 0f;
 	public float CrouchWalkVal = 0f;
 	public float JumpVal = 0f;
-	public float JumpFallVal = 0f;
-	public float JumpLandVal = 0f;
-	public float JumpHardLandVal = 0f;
+	public float FallVal = 0f;
+	public float LandingVal = 0f;
+	public float HardLandingVal = 0f;
 	public float IdleExtraVal = 0f;
 	[Export] public float BlendSpeed = 15f;
 	#endregion
@@ -42,9 +42,9 @@ public partial class Animator : Node
 		AnimationTree.Set($"parameters/CrouchIdleBlend/blend_amount", CrouchIdleVal);
 		AnimationTree.Set($"parameters/CrouchWalkBlend/blend_amount", CrouchWalkVal);
 		AnimationTree.Set($"parameters/JumpBlend/blend_amount", JumpVal);
-		AnimationTree.Set($"parameters/JumpFallBlend/blend_amount", JumpFallVal);
-		AnimationTree.Set($"parameters/LandingBlend/blend_amount", JumpLandVal);
-		AnimationTree.Set($"parameters/HardfLandingBlend/blend_amount", JumpHardLandVal);
+		AnimationTree.Set($"parameters/FallBlend/blend_amount", FallVal);
+		AnimationTree.Set($"parameters/LandingBlend/blend_amount", LandingVal);
+		AnimationTree.Set($"parameters/HardLandingBlend/blend_amount", HardLandingVal);
 		AnimationTree.Set($"parameters/ExtraIdleBlend/blend_amount", IdleExtraVal);
 	}
 
@@ -59,9 +59,9 @@ public partial class Animator : Node
 				CrouchIdleVal = Mathf.Lerp(CrouchIdleVal, 0f, BlendSpeed * (float)delta);
 				CrouchWalkVal = Mathf.Lerp(CrouchWalkVal, 0f, BlendSpeed * (float)delta);
 				JumpVal = Mathf.Lerp(JumpVal, 0f, BlendSpeed * (float)delta);
-				JumpFallVal = Mathf.Lerp(JumpFallVal, 0f, BlendSpeed * (float)delta);
-				JumpLandVal = Mathf.Lerp(JumpLandVal, 0f, BlendSpeed * (float)delta);
-				JumpHardLandVal = Mathf.Lerp(JumpHardLandVal, 0f, BlendSpeed * (float)delta);
+				FallVal = Mathf.Lerp(FallVal, 0f, BlendSpeed * (float)delta);
+				LandingVal = Mathf.Lerp(LandingVal, 0f, BlendSpeed * (float)delta);
+				HardLandingVal = Mathf.Lerp(HardLandingVal, 0f, BlendSpeed * (float)delta);
 				IdleExtraVal = Mathf.Lerp(IdleExtraVal, 0f, BlendSpeed * (float)delta);
 				break;
 			case State.Walk:
@@ -71,9 +71,9 @@ public partial class Animator : Node
 				CrouchIdleVal = Mathf.Lerp(CrouchIdleVal, 0f, BlendSpeed * (float)delta);
 				CrouchWalkVal = Mathf.Lerp(CrouchWalkVal, 0f, BlendSpeed * (float)delta);
 				JumpVal = Mathf.Lerp(JumpVal, 0f, BlendSpeed * (float)delta);
-				JumpFallVal = Mathf.Lerp(JumpFallVal, 0f, BlendSpeed * (float)delta);
-				JumpLandVal = Mathf.Lerp(JumpLandVal, 0f, BlendSpeed * (float)delta);
-				JumpHardLandVal = Mathf.Lerp(JumpHardLandVal, 0f, BlendSpeed * (float)delta);
+				FallVal = Mathf.Lerp(FallVal, 0f, BlendSpeed * (float)delta);
+				LandingVal = Mathf.Lerp(LandingVal, 0f, BlendSpeed * (float)delta);
+				HardLandingVal = Mathf.Lerp(HardLandingVal, 0f, BlendSpeed * (float)delta);
 				IdleExtraVal = Mathf.Lerp(IdleExtraVal, 0f, BlendSpeed * (float)delta);
 				break;
 			case State.Run:
@@ -83,9 +83,9 @@ public partial class Animator : Node
 				CrouchIdleVal = Mathf.Lerp(CrouchIdleVal, 0f, BlendSpeed * (float)delta);
 				CrouchWalkVal = Mathf.Lerp(CrouchWalkVal, 0f, BlendSpeed * (float)delta);
 				JumpVal = Mathf.Lerp(JumpVal, 0f, BlendSpeed * (float)delta);
-				JumpFallVal = Mathf.Lerp(JumpFallVal, 0f, BlendSpeed * (float)delta);
-				JumpLandVal = Mathf.Lerp(JumpLandVal, 0f, BlendSpeed * (float)delta);
-				JumpHardLandVal = Mathf.Lerp(JumpHardLandVal, 0f, BlendSpeed * (float)delta);
+				FallVal = Mathf.Lerp(FallVal, 0f, BlendSpeed * (float)delta);
+				LandingVal = Mathf.Lerp(LandingVal, 0f, BlendSpeed * (float)delta);
+				HardLandingVal = Mathf.Lerp(HardLandingVal, 0f, BlendSpeed * (float)delta);
 				IdleExtraVal = Mathf.Lerp(IdleExtraVal, 0f, BlendSpeed * (float)delta);
 				break;
 			case State.Sprint:
@@ -95,9 +95,9 @@ public partial class Animator : Node
 				CrouchIdleVal = Mathf.Lerp(CrouchIdleVal, 0f, BlendSpeed * (float)delta);
 				CrouchWalkVal = Mathf.Lerp(CrouchWalkVal, 0f, BlendSpeed * (float)delta);
 				JumpVal = Mathf.Lerp(JumpVal, 0f, BlendSpeed * (float)delta);
-				JumpFallVal = Mathf.Lerp(JumpFallVal, 0f, BlendSpeed * (float)delta);
-				JumpLandVal = Mathf.Lerp(JumpLandVal, 0f, BlendSpeed * (float)delta);
-				JumpHardLandVal = Mathf.Lerp(JumpHardLandVal, 0f, BlendSpeed * (float)delta);
+				FallVal = Mathf.Lerp(FallVal, 0f, BlendSpeed * (float)delta);
+				LandingVal = Mathf.Lerp(LandingVal, 0f, BlendSpeed * (float)delta);
+				HardLandingVal = Mathf.Lerp(HardLandingVal, 0f, BlendSpeed * (float)delta);
 				IdleExtraVal = Mathf.Lerp(IdleExtraVal, 0f, BlendSpeed * (float)delta);
 				break;
 			case State.Jump:
@@ -107,9 +107,9 @@ public partial class Animator : Node
 				CrouchIdleVal = Mathf.Lerp(CrouchIdleVal, 0f, BlendSpeed * (float)delta);
 				CrouchWalkVal = Mathf.Lerp(CrouchWalkVal, 0f, BlendSpeed * (float)delta);
 				JumpVal = Mathf.Lerp(JumpVal, 1f, BlendSpeed * (float)delta);
-				JumpFallVal = Mathf.Lerp(JumpFallVal, 0f, BlendSpeed * (float)delta);
-				JumpLandVal = Mathf.Lerp(JumpLandVal, 0f, BlendSpeed * (float)delta);
-				JumpHardLandVal = Mathf.Lerp(JumpHardLandVal, 0f, BlendSpeed * (float)delta);
+				FallVal = Mathf.Lerp(FallVal, 0f, BlendSpeed * (float)delta);
+				LandingVal = Mathf.Lerp(LandingVal, 0f, BlendSpeed * (float)delta);
+				HardLandingVal = Mathf.Lerp(HardLandingVal, 0f, BlendSpeed * (float)delta);
 				IdleExtraVal = Mathf.Lerp(IdleExtraVal, 0f, BlendSpeed * (float)delta);
 				break;
 			case State.JumpLand:
@@ -119,9 +119,9 @@ public partial class Animator : Node
 				CrouchIdleVal = Mathf.Lerp(CrouchIdleVal, 0f, BlendSpeed * (float)delta);
 				CrouchWalkVal = Mathf.Lerp(CrouchWalkVal, 0f, BlendSpeed * (float)delta);
 				JumpVal = Mathf.Lerp(JumpVal, 0f, BlendSpeed * (float)delta);
-				JumpFallVal = Mathf.Lerp(JumpFallVal, 0f, BlendSpeed * (float)delta);
-				JumpLandVal = Mathf.Lerp(JumpLandVal, 1f, BlendSpeed * (float)delta);
-				JumpHardLandVal = Mathf.Lerp(JumpHardLandVal, 0f, BlendSpeed * (float)delta);
+				FallVal = Mathf.Lerp(FallVal, 0f, BlendSpeed * (float)delta);
+				LandingVal = Mathf.Lerp(LandingVal, 1f, BlendSpeed * (float)delta);
+				HardLandingVal = Mathf.Lerp(HardLandingVal, 0f, BlendSpeed * (float)delta);
 				IdleExtraVal = Mathf.Lerp(IdleExtraVal, 0f, BlendSpeed * (float)delta);
 				break;
 			case State.JumpLandHard:
@@ -131,9 +131,9 @@ public partial class Animator : Node
 				CrouchIdleVal = Mathf.Lerp(CrouchIdleVal, 0f, BlendSpeed * (float)delta);
 				CrouchWalkVal = Mathf.Lerp(CrouchWalkVal, 0f, BlendSpeed * (float)delta);
 				JumpVal = Mathf.Lerp(JumpVal, 0f, BlendSpeed * (float)delta);
-				JumpFallVal = Mathf.Lerp(JumpFallVal, 0f, BlendSpeed * (float)delta);
-				JumpLandVal = Mathf.Lerp(JumpLandVal, 0f, BlendSpeed * (float)delta);
-				JumpHardLandVal = Mathf.Lerp(JumpHardLandVal, 1f, BlendSpeed * (float)delta);
+				FallVal = Mathf.Lerp(FallVal, 0f, BlendSpeed * (float)delta);
+				LandingVal = Mathf.Lerp(LandingVal, 0f, BlendSpeed * (float)delta);
+				HardLandingVal = Mathf.Lerp(HardLandingVal, 1f, BlendSpeed * (float)delta);
 				IdleExtraVal = Mathf.Lerp(IdleExtraVal, 0f, BlendSpeed * (float)delta);
 				break;
 			case State.CrouchIdle:
@@ -143,9 +143,9 @@ public partial class Animator : Node
 				CrouchIdleVal = Mathf.Lerp(CrouchIdleVal, 1f, BlendSpeed * (float)delta);
 				CrouchWalkVal = Mathf.Lerp(CrouchWalkVal, 0f, BlendSpeed * (float)delta);
 				JumpVal = Mathf.Lerp(JumpVal, 0f, BlendSpeed * (float)delta);
-				JumpFallVal = Mathf.Lerp(JumpFallVal, 0f, BlendSpeed * (float)delta);
-				JumpLandVal = Mathf.Lerp(JumpLandVal, 0f, BlendSpeed * (float)delta);
-				JumpHardLandVal = Mathf.Lerp(JumpHardLandVal, 0f, BlendSpeed * (float)delta);
+				FallVal = Mathf.Lerp(FallVal, 0f, BlendSpeed * (float)delta);
+				LandingVal = Mathf.Lerp(LandingVal, 0f, BlendSpeed * (float)delta);
+				HardLandingVal = Mathf.Lerp(HardLandingVal, 0f, BlendSpeed * (float)delta);
 				IdleExtraVal = Mathf.Lerp(IdleExtraVal, 0f, BlendSpeed * (float)delta);
 				break;
 			case State.CrouchWalk:
@@ -155,9 +155,9 @@ public partial class Animator : Node
 				CrouchIdleVal = Mathf.Lerp(CrouchIdleVal, 0f, BlendSpeed * (float)delta);
 				CrouchWalkVal = Mathf.Lerp(CrouchWalkVal, 1f, BlendSpeed * (float)delta);
 				JumpVal = Mathf.Lerp(JumpVal, 0f, BlendSpeed * (float)delta);
-				JumpFallVal = Mathf.Lerp(JumpFallVal, 0f, BlendSpeed * (float)delta);
-				JumpLandVal = Mathf.Lerp(JumpLandVal, 0f, BlendSpeed * (float)delta);
-				JumpHardLandVal = Mathf.Lerp(JumpHardLandVal, 0f, BlendSpeed * (float)delta);
+				FallVal = Mathf.Lerp(FallVal, 0f, BlendSpeed * (float)delta);
+				LandingVal = Mathf.Lerp(LandingVal, 0f, BlendSpeed * (float)delta);
+				HardLandingVal = Mathf.Lerp(HardLandingVal, 0f, BlendSpeed * (float)delta);
 				IdleExtraVal = Mathf.Lerp(IdleExtraVal, 0f, BlendSpeed * (float)delta);
 				break;
 			case State.Fall:
@@ -167,9 +167,9 @@ public partial class Animator : Node
 				CrouchIdleVal = Mathf.Lerp(CrouchIdleVal, 0f, BlendSpeed * (float)delta);
 				CrouchWalkVal = Mathf.Lerp(CrouchWalkVal, 0f, BlendSpeed * (float)delta);
 				JumpVal = Mathf.Lerp(JumpVal, 0f, BlendSpeed * (float)delta);
-				JumpFallVal = Mathf.Lerp(JumpFallVal, 1f, BlendSpeed * (float)delta);
-				JumpLandVal = Mathf.Lerp(JumpLandVal, 0f, BlendSpeed * (float)delta);
-				JumpHardLandVal = Mathf.Lerp(JumpHardLandVal, 0f, BlendSpeed * (float)delta);
+				FallVal = Mathf.Lerp(FallVal, 1f, BlendSpeed * (float)delta);
+				LandingVal = Mathf.Lerp(LandingVal, 0f, BlendSpeed * (float)delta);
+				HardLandingVal = Mathf.Lerp(HardLandingVal, 0f, BlendSpeed * (float)delta);
 				IdleExtraVal = Mathf.Lerp(IdleExtraVal, 0f, BlendSpeed * (float)delta);
 				break;
 			default:

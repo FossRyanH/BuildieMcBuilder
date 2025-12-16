@@ -9,9 +9,9 @@ public static class LookupChart
         {
             MovementModifer.Idle => 0f,
             MovementModifer.Walk => 2f,
-            MovementModifer.Run => 5f,
+            MovementModifer.Run => 4f,
             MovementModifer.Crouch => 1f,
-            MovementModifer.Sprint => 10f,
+            MovementModifer.Sprint => 8f,
             _ => 1f
         };
     }

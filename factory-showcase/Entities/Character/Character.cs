@@ -12,8 +12,7 @@ public partial class Character : CharacterBody3D
 	#region State Vars
 	public bool IsRunning = false;
 	public bool IsCrouching = false;
-	public bool IsJogging = true;
-	public bool IsWalking = false;
+	[Export] public bool IsForcedWalk = false;
 	#endregion
 
 	#region DirectoinalControls
